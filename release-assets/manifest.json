@@ -1,0 +1,10 @@
+{
+  "id": "note-view-tracker",
+  "name": "Note View Tracker",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "Tracks and displays the number of times each note has been viewed.",
+  "author": "Developer",
+  "authorUrl": "https://github.com/developer-virtual/obsidian-note-tracker",
+  "isDesktopOnly": false
+}
