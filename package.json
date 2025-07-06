@@ -18,7 +18,7 @@
     "obsidian-md",
     "obsidian-plugin"
   ],
-  "author": "Your Name",
+  "author": "Developer <developer@example.com>",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.11.18",
