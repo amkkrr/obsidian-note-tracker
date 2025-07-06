@@ -1,0 +1,43 @@
+/* Note View Tracker Plugin Styles */
+
+/* 状态栏样式 */
+.status-bar-item.note-view-tracker {
+    color: var(--text-muted);
+    font-size: var(--font-ui-smaller);
+    padding: 0 8px;
+}
+
+.status-bar-item.note-view-tracker:hover {
+    color: var(--text-normal);
+}
+
+/* 设置界面样式 */
+.note-view-tracker-settings {
+    padding: 20px;
+}
+
+.note-view-tracker-settings h2 {
+    margin-bottom: 20px;
+    color: var(--text-normal);
+}
+
+.note-view-tracker-settings .setting-item {
+    margin-bottom: 15px;
+}
+
+.note-view-tracker-settings .setting-item-description {
+    color: var(--text-muted);
+    font-size: var(--font-ui-smaller);
+}
+
+/* 可能的未来功能：在文件浏览器中显示访问次数 */
+.nav-file-title-content::after {
+    /* 预留空间用于显示访问次数 */
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .status-bar-item.note-view-tracker {
+        display: none;
+    }
+}

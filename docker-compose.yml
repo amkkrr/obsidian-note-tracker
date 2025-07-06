@@ -1,0 +1,98 @@
+version: '3.8'
+
+services:
+  # Main development environment
+  dev:
+    build: .
+    container_name: obsidian-plugin-dev
+    volumes:
+      - .:/app
+      - /app/node_modules  # Anonymous volume to prevent overwriting
+    working_dir: /app
+    command: npm run dev
+    environment:
+      - NODE_ENV=development
+    networks:
+      - obsidian-network
+
+  # Testing environment
+  test:
+    build: .
+    container_name: obsidian-plugin-test
+    volumes:
+      - .:/app
+      - /app/node_modules
+    working_dir: /app
+    command: npm test
+    environment:
+      - NODE_ENV=test
+      - CI=true
+    networks:
+      - obsidian-network
+
+  # Linting and code quality
+  lint:
+    build: .
+    container_name: obsidian-plugin-lint
+    volumes:
+      - .:/app
+      - /app/node_modules
+    working_dir: /app
+    command: npm run lint
+    environment:
+      - NODE_ENV=development
+    networks:
+      - obsidian-network
+
+  # Build environment
+  build:
+    build: .
+    container_name: obsidian-plugin-build
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - build-output:/app/dist
+    working_dir: /app
+    command: npm run build
+    environment:
+      - NODE_ENV=production
+    networks:
+      - obsidian-network
+
+  # CI/CD simulation environment
+  ci:
+    build: .
+    container_name: obsidian-plugin-ci
+    volumes:
+      - .:/app
+      - /app/node_modules
+    working_dir: /app
+    command: >
+      sh -c "
+        echo '🔍 Running linting...' &&
+        npm run lint &&
+        echo '✅ Linting passed' &&
+        echo '🧪 Running tests...' &&
+        npm test &&
+        echo '✅ Tests passed' &&
+        echo '🏗️ Building plugin...' &&
+        npm run build &&
+        echo '✅ Build completed' &&
+        echo '🎉 CI pipeline completed successfully!'
+      "
+    environment:
+      - NODE_ENV=test
+      - CI=true
+    networks:
+      - obsidian-network
+    depends_on:
+      - lint
+      - test
+      - build
+
+networks:
+  obsidian-network:
+    driver: bridge
+
+volumes:
+  build-output:

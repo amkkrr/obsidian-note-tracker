@@ -1,0 +1,37 @@
+{
+  "name": "obsidian-note-view-tracker",
+  "version": "1.0.0",
+  "description": "Tracks and displays the view count for each note in Obsidian.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "node esbuild.config.mjs production",
+    "lint": "eslint . --ext .ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "docker:setup": "./docker-test.sh setup",
+    "docker:test": "./docker-test.sh test",
+    "docker:ci": "./docker-test.sh ci"
+  },
+  "keywords": [
+    "obsidian-md",
+    "obsidian-plugin"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
+    "esbuild": "0.17.19",
+    "obsidian": "latest",
+    "prettier": "^2.8.8",
+    "eslint": "^8.40.0",
+    "typescript": "^5.0.4",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "@types/jest": "^29.5.8",
+    "@jest/globals": "^29.7.0"
+  }
+}
